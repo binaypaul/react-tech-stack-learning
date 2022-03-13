@@ -12,17 +12,13 @@ export default function App() {
     {
       hookLabel: 'useEffect()',
       hookValue: 'useeffect'
-    },
-    {
-      hookLabel: 'useReducer()',
-      hookValue: 'usereducer'
-    },
+    }
   ];
 
   const [radioSelected, setRadioSelected] = useState(radiobuttons[0].hookValue);
 
-  const renderHook = (key) => {
-    switch (key) {
+  const renderHook = (radioSelected) => {
+    switch (radioSelected) {
       case radiobuttons[0].hookValue:
         return <UseState />
       
@@ -36,22 +32,27 @@ export default function App() {
 
   return (
     <div className="App">
-      <h3>React Hooks</h3>
-      <>
+      <p className="m-5 text-center text-3xl text-blue-800">
+        React Hooks
+      </p>
+      <div className="p-3 max-w-fit mx-auto bg-blue-300 rounded-xl shadow-lg flex items-center space-x-5">
         {radiobuttons?.map((radiobutton, i) => (
           <span key= {i} >
-          <input 
-            type='radio' 
-            checked = {radioSelected === radiobutton.hookValue}
-            name= {radiobutton.hookLabel} 
-            value= {radiobutton.hookValue}
-            onChange= {(e)=>setRadioSelected(e.target.value)}
-          /> {radiobutton.hookLabel}
+            <input
+              type='radio' 
+              checked = {radioSelected === radiobutton.hookValue}
+              name= {radiobutton.hookLabel} 
+              value= {radiobutton.hookValue}
+              onChange= {(e)=>setRadioSelected(e.target.value)}
+            />
+            <span className="text-black font-bold">{radiobutton.hookLabel}</span>
           </span>
         ))}
-      </>
-
-      {renderHook(radioSelected)}
+      </div>
+      <div className="p-5"></div>
+      <div className="p-6 max-w-4xl mx-auto bg-orange-300 rounded-xl shadow-lg space-x-5">
+        {renderHook(radioSelected)}
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import UseState from './hooks/UseState';
 import UseEffect from './hooks/UseEffect';
+import UseContext from './hooks/UseContext';
 
 export default function App() {
   const radiobuttons = [
@@ -12,6 +13,10 @@ export default function App() {
     {
       hookLabel: 'useEffect()',
       hookValue: 'useeffect'
+    },
+    {
+      hookLabel: 'useContext()',
+      hookValue: 'usecontext'
     }
   ];
 
@@ -24,6 +29,9 @@ export default function App() {
       
       case radiobuttons[1].hookValue:
         return <UseEffect />
+      
+        case radiobuttons[2].hookValue:
+          return <UseContext />
     
       default:
         return <UseState />
@@ -50,7 +58,7 @@ export default function App() {
         ))}
       </div>
       <div className="p-5"></div>
-      <div className="p-6 max-w-4xl mx-auto bg-orange-300 rounded-xl shadow-lg space-x-5">
+      <div className="p-6 max-w-4xl mx-auto bg-blue-300 rounded-xl shadow-lg space-x-5">
         {renderHook(radioSelected)}
       </div>
     </div>

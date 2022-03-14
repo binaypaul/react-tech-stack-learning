@@ -57,7 +57,7 @@ function ContextThemedBanner() {
 function ThemedBanner() {
     const theme = useContext(ThemeContext);
     return (
-        <p style = {{color: theme.foreground, background: theme.background}}>
+        <p className='m-2 rounded-lg shadow-lg shadow-slate-500' style = {{color: theme.foreground, background: theme.background}}>
             <text>
                 I am themed using:<br />
                 Created using: <b>"ThemeContext = React.createContext(anything)"</b><br />

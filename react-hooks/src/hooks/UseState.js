@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function UseState() {
+const UseState = () => {
 
     const [counter, setCounter] = useState(0);
 
@@ -20,3 +20,5 @@ export default function UseState() {
         </>
     );
 }
+
+export default UseState;

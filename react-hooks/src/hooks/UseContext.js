@@ -13,7 +13,7 @@ const themes = {
 
 const ThemeContext = React.createContext(themes.light);
 
-export default function UseContext() {
+const UseContext = () => {
     const [theme, setTheme] = useState(themes.light);
     const changeThemeHandler = () => {
             setTheme((theme)=> {
@@ -69,3 +69,5 @@ function ThemedBanner() {
         </p>
     );
 }
+
+export default UseContext;

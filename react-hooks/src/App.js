@@ -4,7 +4,7 @@ import UseState from './hooks/UseState';
 import UseEffect from './hooks/UseEffect';
 import UseContext from './hooks/UseContext';
 
-export default function App() {
+const App = () => {
   const radiobuttons = [
     {
       hookLabel: 'useState()',
@@ -64,3 +64,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

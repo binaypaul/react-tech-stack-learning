@@ -1,0 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+.todo-card-btn {
+  @apply rounded-sm shadow-yellow-800 transition-all hover:shadow-lg hover:shadow-slate-500 hover:bg-sky-400 active:scale-[0.8] active:shadow-md;
+}

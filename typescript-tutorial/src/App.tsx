@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import InputFeild from './components/InputFeild';
 import TodoList from './components/TodoList';
@@ -45,22 +45,55 @@ const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Todo[]>([]);
 
-
   const handleTodoGoBtn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (todo) {
-      setTodos([{ id: Date.now(), todo, isDone: false, isEditable: false }, ...todos]);
+      setTodos(
+        [
+          {
+            createdDate: Date.now(),
+            modifiedDate: Date.now(),
+            todo,
+            isDone: false,
+            isEditable: false
+          },
+          ...todos
+        ]);
+    }
+  }
+
+  const handleSortByOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    switch (e.target.value) {
+      case 'Created Date':
+        setTodos(tds => [...tds.sort((a, b) => b.createdDate - a.createdDate)]);
+        break;
+
+      case 'Modified Date':
+        setTodos(tds => [...tds.sort((a, b) => b.modifiedDate - a.modifiedDate)]);
+        break;
+
+      default:
+        setTodos(tds => [...tds.sort((a, b) => b.createdDate - a.createdDate)]);
+        break;
     }
   }
 
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center bg-blue-600 " style={{ fontFamily: 'Neucha' }}>
-      <span className="uppercase text-4xl mt-8 text-white z-10">
-        Taskify
-      </span>
-      <InputFeild todo={todo} setTodo={setTodo} handleTodoGoBtn={handleTodoGoBtn} />
-      <TodoList todos={todos} setTodos={setTodos} />
+    <div className="w-screen h-fit min-h-screen flex flex-col items-center bg-blue-600" style={{ fontFamily: 'Neucha' }}>
+      <p className="text-4xl mt-8 text-white z-10">
+        To Do
+      </p>
+      <InputFeild
+        todo={todo}
+        setTodo={setTodo}
+        handleTodoGoBtn={handleTodoGoBtn}
+      />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        handleSortByOptionChange={handleSortByOptionChange}
+      />
     </div>
   );
 }

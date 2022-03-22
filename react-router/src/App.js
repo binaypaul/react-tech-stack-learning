@@ -1,18 +1,20 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import About from './components/About';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-      </Routes>
-    </>
+    <div>
+      <h1>Bookkeeper!</h1>
+       <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Link to="/invoices">Invoices</Link> | {" "}
+        <Link to="/expenses">Expenses</Link>
+      </nav>
+      <Outlet />
+    </div>
   );
 }
 

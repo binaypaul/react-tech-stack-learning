@@ -65,7 +65,7 @@ const Quiz = () => {
         });
 
         return (
-            <Results score={score} onRestartBtnCLick = {onRestartBtnCLick}/>
+            <Results scoreProp={score} onRestartBtnCLick = {onRestartBtnCLick}/>
         );
     } else {
         return (
